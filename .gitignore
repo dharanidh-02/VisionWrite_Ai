@@ -1,0 +1,12 @@
+# Python cache files
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# IDE files
+.gemini/
+.vscode/
+.idea/
+
+# Exclude README.md as requested
+README.md
