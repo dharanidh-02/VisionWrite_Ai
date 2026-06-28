@@ -1,7 +1,6 @@
 import os
 import streamlit as st
 
-# Project Paths
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR = os.path.join(BASE_DIR, "Ai_models")
 
@@ -9,57 +8,46 @@ MODEL_PATH = os.path.join(MODEL_DIR, "visionwrite_ai_emnist.keras")
 MAPPING_PATH = os.path.join(MODEL_DIR, "label_mapping.pkl")
 HISTORY_PATH = os.path.join(MODEL_DIR, "training_history.pkl")
 
-# Theme Colors (Professional neutral palettes)
 LIGHT_THEME = {
-    "bg": "#F4F7FB",
-    "bg_gradient_1": "#F7F9FC",
-    "bg_gradient_2": "#FFFFFF",
+    "bg": "#FFFFFF",
+    "bg_secondary": "#F8FAFC",
+    "sidebar_bg": "#F9FAFB",
     "card_bg": "#FFFFFF",
-    "text": "#1F2937",
+    "border": "#E5E7EB",
+    "text_primary": "#111827",
+    "text_secondary": "#4B5563",
     "text_muted": "#6B7280",
-    "primary": "#2563EB",
-    "secondary": "#1D4ED8",
-    "accent": "#0EA5E9",
-    "success": "#16A34A",
+    "accent_primary": "#2563EB",
+    "accent_secondary": "#4F46E5",
+    "success": "#22C55E",
     "warning": "#F59E0B",
-    "danger": "#DC2626",
-    "border": "#DCE3EC",
-    "shadow": "0 14px 30px -24px rgba(15, 23, 42, 0.45)",
-    "sidebar_bg": "#EEF3FA",
-    "skill_bg": "rgba(37, 99, 235, 0.08)",
-    "skill_color": "#2563EB",
-    "skill_border": "rgba(37, 99, 235, 0.18)",
-    "heading": "#0F172A",
-    "btn_hover": "#1D4ED8",
-    "toggle_bg": "#334155"
+    "danger": "#EF4444",
+    "hover": "#F3F4F6",
+    "selection": "#DBEAFE",
+    "shadow": "0 12px 30px -24px rgba(15, 23, 42, 0.25)",
+    "plotly_template": "plotly_white",
 }
 
-# Dark Mode Colors (enterprise dark)
 DARK_THEME = {
-    "bg": "#0B1220",
-    "bg_gradient_1": "#0B1220",
-    "bg_gradient_2": "#111B2E",
-    "card_bg": "#111A2B",
-    "text": "#E2E8F0",
+    "bg": "#0F172A",
+    "bg_secondary": "#111827",
+    "sidebar_bg": "#020617",
+    "card_bg": "#1E293B",
+    "border": "#334155",
+    "text_primary": "#F8FAFC",
+    "text_secondary": "#CBD5E1",
     "text_muted": "#94A3B8",
-    "primary": "#60A5FA",
-    "secondary": "#3B82F6",
-    "accent": "#38BDF8",
+    "accent_primary": "#60A5FA",
+    "accent_secondary": "#A78BFA",
     "success": "#22C55E",
     "warning": "#FBBF24",
-    "danger": "#FB7185",
-    "border": "#263244",
-    "shadow": "0 18px 36px -26px rgba(2, 6, 23, 0.9)",
-    "sidebar_bg": "#070E1C",
-    "skill_bg": "rgba(96, 165, 250, 0.1)",
-    "skill_color": "#60A5FA",
-    "skill_border": "rgba(96, 165, 250, 0.24)",
-    "heading": "#F8FAFC",
-    "btn_hover": "#2563EB",
-    "toggle_bg": "#334155"
+    "danger": "#F87171",
+    "hover": "#1F2937",
+    "selection": "#1E3A8A",
+    "shadow": "0 14px 34px -22px rgba(2, 6, 23, 0.6)",
+    "plotly_template": "plotly_dark",
 }
 
-# Dataset Metadata
 EMNIST_METADATA = {
     "name": "EMNIST Balanced",
     "total_classes": 47,
@@ -72,22 +60,17 @@ EMNIST_METADATA = {
     "accuracy": "87.5% (approx)",
 }
 
+
 def init_session_state():
-    """Initializes global session states for theme, prediction history, and stats."""
     if "theme" not in st.session_state:
         st.session_state.theme = "light"
-    
     if "prediction_history" not in st.session_state:
         st.session_state.prediction_history = []
-    
     if "total_predictions" not in st.session_state:
         st.session_state.total_predictions = 0
-        
     if "avg_confidence" not in st.session_state:
         st.session_state.avg_confidence = 0.0
 
+
 def get_current_colors():
-    """Returns the HSL color palette based on current theme selection."""
-    if st.session_state.get("theme", "light") == "dark":
-        return DARK_THEME
-    return LIGHT_THEME
+    return DARK_THEME if st.session_state.get("theme", "light") == "dark" else LIGHT_THEME
