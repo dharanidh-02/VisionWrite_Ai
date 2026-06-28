@@ -120,7 +120,7 @@ else:
                 # 1. Main prediction display
                 res_col1, res_col2 = st.columns([1, 1.5])
                 with res_col1:
-                    st.markdown("<div style='text-align: center;'>", unsafe_allow_html=True)
+                    st.markdown("<div class='panel-card' style='text-align: center;'>", unsafe_allow_html=True)
                     st.markdown("##### Predicted Character")
                     st.markdown(f"<div class='prediction-large'>{pred_char}</div>", unsafe_allow_html=True)
                     st.markdown(f"**Inference Time:** `{inference_time * 1000:.1f} ms`")
@@ -250,7 +250,7 @@ else:
                 
                 st.markdown(
                     """
-                    <div style="border: 1px dashed var(--border-color); border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <div class="empty-state">
                         <div style="text-align: center;">
                             <span style="font-size: 48px;">🔮</span>
                             <p style="margin-top: 12px;">Awaiting drawing input...</p>
@@ -265,6 +265,12 @@ else:
         st.markdown("### 📜 Prediction History")
         
         if st.session_state.prediction_history:
+            st.markdown("#### Conversation View")
+            st.markdown(
+                utils.render_prediction_transcript(st.session_state.prediction_history),
+                unsafe_allow_html=True
+            )
+            st.markdown("#### Detailed Table")
             history_df = pd.DataFrame(st.session_state.prediction_history)
             st.dataframe(
                 history_df.iloc[::-1], 
@@ -645,7 +651,7 @@ else:
                 # Inactive camera state placeholder
                 st.markdown(
                     """
-                    <div style="border: 1px dashed var(--border-color); border-radius: 12px; height: 350px; display: flex; align-items: center; justify-content: center; color: var(--text-muted);">
+                    <div class="empty-state" style="min-height: 350px;">
                         <div style="text-align: center;">
                             <span style="font-size: 64px;">📷</span>
                             <p style="margin-top: 15px; font-weight: 500;">Toggle "Activate Webcam" on the left to start Air Writing.</p>

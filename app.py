@@ -74,6 +74,7 @@ def load_css():
         --heading-color: {colors.get("heading", "#0F172A")};
         --btn-hover: {colors.get("btn_hover", "#1D4ED8")};
         --toggle-bg: {colors.get("toggle_bg", "#cbd5e1")};
+        --accent: {colors.get("accent", "#7C3AED")};
     }}
     """
     st.markdown(f"<style>{theme_vars}\n{css}</style>", unsafe_allow_html=True)
@@ -83,10 +84,14 @@ load_css()
 
 # 4. Sidebar Top Section (Brand Title only, no image)
 st.sidebar.markdown(
-    '<div style="padding: 10px 0 5px 0;"><h2 style="margin:0; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; font-family:\'Poppins\', sans-serif; font-size: 24px; font-weight: 700;">VisionWrite AI</h2></div>',
+    """
+    <div class="sidebar-brand">
+        <h2 class="sidebar-brand-title gradient-text">VisionWrite AI</h2>
+        <p class="sidebar-brand-subtitle">Handwritten Character Recognition</p>
+    </div>
+    """,
     unsafe_allow_html=True
 )
-st.sidebar.markdown("<p style='font-size:11px; margin-top:-15px; margin-bottom:10px; font-weight:500; color:var(--text-muted);'>Handwritten Character Recognition</p>", unsafe_allow_html=True)
 
 # 5. Define Pages for Navigation
 home_page = st.Page("pages/1_Home.py", title="Home", icon=":material/home:")
@@ -118,7 +123,7 @@ if st.session_state.theme != new_theme:
 # Session Stats (Inline & Compact)
 st.sidebar.markdown(
     f"""
-    <div style="font-size: 12px; margin: 8px 0; color: var(--text-muted);">
+    <div class="sidebar-stats" style="font-size: 12px; margin: 8px 0;">
         Predictions: <strong style="color: var(--text-color);">{st.session_state.total_predictions}</strong> | 
         Avg Conf: <strong style="color: var(--text-color);">{st.session_state.avg_confidence * 100:.1f}%</strong>
     </div>
@@ -129,7 +134,7 @@ st.sidebar.markdown(
 # Footer & Developer Profile Card (Compact & Integrated)
 st.sidebar.markdown(
     """
-    <div style="display: flex; align-items: center; gap: 10px; padding: 8px 12px; background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 10px; margin-top: 10px; box-shadow: var(--shadow);">
+    <div class="sidebar-card" style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
         <div style="width: 32px; height: 32px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); display: flex; align-items: center; justify-content: center; color: white; font-weight: 700; font-size: 11px; font-family: 'Outfit', sans-serif;">
             DT
         </div>
@@ -138,7 +143,7 @@ st.sidebar.markdown(
             <div style="font-size: 10px; color: var(--text-muted); text-overflow: ellipsis; overflow: hidden; white-space: nowrap; font-family: 'Inter', sans-serif;">AI & ML Developer</div>
         </div>
     </div>
-    <p style='font-size:9px; text-align:center; color:var(--text-muted); margin: 6px 0 0 0;'>VisionWrite AI © 2026 | CodeAlpha</p>
+    <p class="sidebar-muted" style='font-size:9px; text-align:center; margin: 6px 0 0 0;'>VisionWrite AI © 2026 | CodeAlpha</p>
     """, 
     unsafe_allow_html=True
 )
