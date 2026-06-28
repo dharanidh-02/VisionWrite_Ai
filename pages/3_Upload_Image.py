@@ -59,19 +59,19 @@ else:
             col_orig, col_proc, col_pred = st.columns(3)
             
             with col_orig:
-                st.markdown("<div style='text-align: center; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 15px;'>", unsafe_allow_html=True)
+                st.markdown("<div class='panel-card' style='text-align: center; height: 100%;'>", unsafe_allow_html=True)
                 st.markdown("##### 1. Original Image")
                 st.image(image, use_container_width=True)
                 st.markdown("</div>", unsafe_allow_html=True)
                 
             with col_proc:
-                st.markdown("<div style='text-align: center; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 15px;'>", unsafe_allow_html=True)
+                st.markdown("<div class='panel-card' style='text-align: center; height: 100%;'>", unsafe_allow_html=True)
                 st.markdown("##### 2. Processed Model Input")
                 st.image(thresholded_preview, caption="Resized & Binarized (28x28)", use_container_width=True)
                 st.markdown("</div>", unsafe_allow_html=True)
                 
             with col_pred:
-                st.markdown("<div style='text-align: center; height: 100%; border: 1px solid var(--border-color); border-radius: 12px; padding: 15px;'>", unsafe_allow_html=True)
+                st.markdown("<div class='panel-card' style='text-align: center; height: 100%;'>", unsafe_allow_html=True)
                 st.markdown("##### 3. CNN Prediction")
                 st.markdown(f"<div class='prediction-large' style='margin-top: 40px;'>{pred_char}</div>", unsafe_allow_html=True)
                 st.markdown(f"**Confidence:** `{confidence * 100:.2f}%`")
@@ -220,6 +220,12 @@ else:
             st.markdown("---")
             st.markdown("### 📜 Prediction History")
             if st.session_state.prediction_history:
+                st.markdown("#### Conversation View")
+                st.markdown(
+                    utils.render_prediction_transcript(st.session_state.prediction_history),
+                    unsafe_allow_html=True
+                )
+                st.markdown("#### Detailed Table")
                 history_df = pd.DataFrame(st.session_state.prediction_history)
                 st.dataframe(
                     history_df.iloc[::-1],
@@ -245,7 +251,7 @@ else:
         # Default placeholder panel
         st.markdown(
             """
-            <div style="border: 1px dashed var(--border-color); border-radius: 12px; height: 250px; display: flex; align-items: center; justify-content: center; color: var(--text-muted); margin-top: 20px;">
+            <div class="empty-state" style="margin-top: 20px;">
                 <div style="text-align: center;">
                     <span style="font-size: 48px;">📤</span>
                     <p style="margin-top: 12px;">Awaiting file upload...</p>

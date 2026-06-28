@@ -9,55 +9,54 @@ MODEL_PATH = os.path.join(MODEL_DIR, "visionwrite_ai_emnist.keras")
 MAPPING_PATH = os.path.join(MODEL_DIR, "label_mapping.pkl")
 HISTORY_PATH = os.path.join(MODEL_DIR, "training_history.pkl")
 
-# Theme Colors (Premium HSL-based palettes)
-# Light Mode Colors (SaaS Minimalist + Healthcare AI)
+# Theme Colors (Professional neutral palettes)
 LIGHT_THEME = {
-    "bg": "#F8FAFC",
-    "bg_gradient_1": "#F8FAFC",
+    "bg": "#F4F7FB",
+    "bg_gradient_1": "#F7F9FC",
     "bg_gradient_2": "#FFFFFF",
     "card_bg": "#FFFFFF",
-    "text": "#334155",
-    "text_muted": "#64748B",
+    "text": "#1F2937",
+    "text_muted": "#6B7280",
     "primary": "#2563EB",
-    "secondary": "#4F46E5",
-    "accent": "#7C3AED",
+    "secondary": "#1D4ED8",
+    "accent": "#0EA5E9",
     "success": "#16A34A",
     "warning": "#F59E0B",
     "danger": "#DC2626",
-    "border": "#E2E8F0",
-    "shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.03), 0 4px 6px -4px rgba(0, 0, 0, 0.03)",
-    "sidebar_bg": "#F1F5F9",
+    "border": "#DCE3EC",
+    "shadow": "0 14px 30px -24px rgba(15, 23, 42, 0.45)",
+    "sidebar_bg": "#EEF3FA",
     "skill_bg": "rgba(37, 99, 235, 0.08)",
     "skill_color": "#2563EB",
-    "skill_border": "rgba(37, 99, 235, 0.15)",
+    "skill_border": "rgba(37, 99, 235, 0.18)",
     "heading": "#0F172A",
     "btn_hover": "#1D4ED8",
-    "toggle_bg": "#1E293B"
+    "toggle_bg": "#334155"
 }
 
-# Dark Mode Colors (SaaS Cyber AI + Premium Dark)
+# Dark Mode Colors (enterprise dark)
 DARK_THEME = {
-    "bg": "#0F172A",
-    "bg_gradient_1": "#0F172A",
-    "bg_gradient_2": "#111827",
-    "card_bg": "#1E293B",
-    "text": "#CBD5E1",
+    "bg": "#0B1220",
+    "bg_gradient_1": "#0B1220",
+    "bg_gradient_2": "#111B2E",
+    "card_bg": "#111A2B",
+    "text": "#E2E8F0",
     "text_muted": "#94A3B8",
     "primary": "#60A5FA",
-    "secondary": "#818CF8",
-    "accent": "#A78BFA",
+    "secondary": "#3B82F6",
+    "accent": "#38BDF8",
     "success": "#22C55E",
     "warning": "#FBBF24",
-    "danger": "#F87171",
-    "border": "#334155",
-    "shadow": "0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.3)",
-    "sidebar_bg": "#020617",
+    "danger": "#FB7185",
+    "border": "#263244",
+    "shadow": "0 18px 36px -26px rgba(2, 6, 23, 0.9)",
+    "sidebar_bg": "#070E1C",
     "skill_bg": "rgba(96, 165, 250, 0.1)",
     "skill_color": "#60A5FA",
-    "skill_border": "rgba(96, 165, 250, 0.2)",
+    "skill_border": "rgba(96, 165, 250, 0.24)",
     "heading": "#F8FAFC",
     "btn_hover": "#2563EB",
-    "toggle_bg": "#475569"
+    "toggle_bg": "#334155"
 }
 
 # Dataset Metadata

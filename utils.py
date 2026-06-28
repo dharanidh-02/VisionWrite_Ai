@@ -1,6 +1,7 @@
 import os
 import pickle
 import time
+import html
 import cv2
 import numpy as np
 import pandas as pd
@@ -152,3 +153,38 @@ def export_history_to_csv():
         return None
     df = pd.DataFrame(st.session_state.prediction_history)
     return df.to_csv(index=False).encode('utf-8')
+
+def render_prediction_transcript(history_items, max_items=12):
+    """Renders prediction history as a chat-like transcript UI."""
+    if not history_items:
+        return ""
+
+    message_blocks = []
+    for item in list(reversed(history_items[-max_items:])):
+        source = html.escape(str(item.get("Source", "Input")))
+        timestamp = html.escape(str(item.get("Timestamp", "")))
+        predicted_char = html.escape(str(item.get("Predicted Character", "-")))
+        confidence = html.escape(str(item.get("Confidence", "-")))
+        inference_time = html.escape(str(item.get("Inference Time", "-")))
+
+        message_blocks.append(
+            f"""
+            <div class="message-row user">
+                <div class="message-bubble">
+                    <div class="message-meta">User Input • {timestamp}</div>
+                    <div class="message-text">{source}</div>
+                </div>
+            </div>
+            <div class="message-row assistant">
+                <div class="message-bubble">
+                    <div class="message-meta">VisionWrite AI</div>
+                    <div class="message-text">
+                        Predicted character: <strong>{predicted_char}</strong><br>
+                        Confidence: {confidence} • Inference: {inference_time}
+                    </div>
+                </div>
+            </div>
+            """
+        )
+
+    return f"<div class='message-feed'>{''.join(message_blocks)}</div>"
